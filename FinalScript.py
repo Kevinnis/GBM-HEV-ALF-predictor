@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 st.title("HEV-ALF Risk Predictor")
-st.caption('This online machine-learning prediction tool was developed to predict the risk of hepatitis E virus-related acute liver failure among hospitalized patients with acute hepatitis E')
+st.caption('This online tool was developed to predict the risk of hepatitis E virus-related acute liver failure among hospitalized patients with acute hepatitis E')
 
 # Customizing the appearance of the input form using streamlit's markdown styling
 st.markdown("""
@@ -66,7 +66,7 @@ if st.button("Predict"):
     # Predict risk score
     risk_score = model.predict(features)[0]
     
-    st.markdown("<h3 style='color: black; font-weight: bold;'>Prediction Results</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='font-weight: bold;'>Prediction Results</h3>", unsafe_allow_html=True)
 
     # Display Risk Score
     st.markdown(f"<h3 style='text-align: center;'>Risk Score: {risk_score:.4f}</h3>", unsafe_allow_html=True)
@@ -87,8 +87,8 @@ if st.button("Predict"):
     else:
         st.markdown("<h3 style='text-align: center; color: green;'>28-day HEV-ALF onset risk: Low-risk</h3>", unsafe_allow_html=True)
     
-    st.markdown("<h3 style='color: black; font-weight: bold;'>Prediction Interpretation</h3>", unsafe_allow_html=True)
-    st.caption('The explanation for this prediction is shown below. Please note the prediction results should be interpreted by medical professionals.')
+    st.markdown("<h3 style='font-weight: bold;'>Prediction Interpretations</h3>", unsafe_allow_html=True)
+    st.caption('The explanations for this prediction is shown below. Please note the prediction results should be interpreted by medical professionals only.')
     
     # Compute SHAP values
     explainer = joblib.load('shap_explainer.pkl')
